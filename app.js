@@ -8,6 +8,8 @@ const brewingOptions = [
 
 const fairTradeOptions = ['Definitely yes', 'Rather yes', 'Rather not', 'Definitely not', 'I dont know'];
 
+const staffOptions = ['Perfect', 'Good', 'Normal', 'Bad', 'Worst', 'No opinion'];
+
 const priceOptions = [
   '< 5%', '5% (+2 CZK)', '10% (+4.5 CZK)', '15% (+7 CZK)',
   '20% (+9 CZK)', '25% (+11 CZK)', '30% (+13.5 CZK)',
@@ -17,6 +19,7 @@ const priceOptions = [
 const q2Container = document.getElementById("q2");
 const q3Container = document.getElementById("q3");
 const q4Container = document.getElementById("q4");
+const q5Container = document.getElementById("q5");
 const q4Wrapper = document.getElementById("q4-wrapper");
 
 function renderCheckboxGroup(container, options, name, max = 3) {
@@ -63,6 +66,7 @@ function renderRadioGroup(container, options, name) {
 renderCheckboxGroup(q2Container, brewingOptions, "q2", 3);
 renderRadioGroup(q3Container, fairTradeOptions, "q3");
 renderRadioGroup(q4Container, priceOptions, "q4");
+renderRadioGroup(q5Container, staffOptions, "q5");
 
 document.getElementById("q3").addEventListener("change", (e) => {
   const value = document.querySelector("input[name=q3]:checked")?.value;
@@ -78,13 +82,14 @@ document.getElementById("submitBtn").onclick = () => {
   const q2 = Array.from(document.querySelectorAll("input[name=q2]:checked")).map(cb => cb.value);
   const q3 = document.querySelector("input[name=q3]:checked")?.value;
   const q4 = document.querySelector("input[name=q4]:checked")?.value || null;
+  const q5 = document.querySelector("input[name=q5]:checked")?.value;
 
-  if (!q1 || q2.length === 0 || !q3 || (q4Wrapper.style.display === "block" && !q4)) {
+  if (!q1 || q2.length === 0 || !q3 || (q4Wrapper.style.display === "block" && !q4) || !q5) {
     alert("Please answer all required questions.");
     return;
   }
 
-  const data = { q1, q2, q3, q4 };
+  const data = { q1, q2, q3, q4, q5 };
 
   fetch(`${firebaseURL}/responses.json`, {
     method: "POST",
