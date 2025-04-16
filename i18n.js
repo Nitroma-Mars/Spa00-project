@@ -5,6 +5,7 @@ const translations = {
     q2: "Which brewing method do you usually prefer? (Max 3)",
     q3: "Would you be willing to pay more for Fair Trade coffee?",
     q4: "If yes, how much more would you be willing to pay?",
+    q5: "How would you rate the staff?",
     button: "Čeština",
   },
   cz: {
@@ -13,6 +14,7 @@ const translations = {
     q2: "Jaký způsob přípravy obvykle preferujete? (maximálně 3)",
     q3: "Byl byste ochotný si za svou kávu připlatit, pokud by splňovala označení „Fair trade“?",
     q4: "Jakou částku byste byl ochoten připlatit?",
+    q5: "Jak by jsi ohodnotil obsluhu?",
     button: "English",
   }
 };
