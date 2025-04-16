@@ -33,11 +33,12 @@ function loadResponses() {
           `"${r.q1 || ''}"`,
           `"${(r.q2 || []).join(';')}"`,
           `"${r.q3 || ''}"`,
-          `"${r.q4 || ''}"`
+          `"${r.q4 || ''}"`,
+          `"${r.q5 || ''}"`
         ]);
       }
 
-      const csv = "Q1,Q2,Q3,Q4\n" + rows.map(r => r.join(",")).join("\n");
+      const csv = "Q1,Q2,Q3,Q4,Q5\n" + rows.map(r => r.join(",")).join("\n");
       out.textContent = csv;
 
       document.getElementById("exportBtn").onclick = () => {
